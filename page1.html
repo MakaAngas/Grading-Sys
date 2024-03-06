@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<script src= "assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.js" type="text/javascript"></script>
+
+</head>
+<body style="background-image: url('images/bg2.jfif'); background-size: 100%; background-repeat: no-repeat;">
+
+	<div class="row">
+
+		<div class="col-md-6">
+			<center>
+				<img src="images/logo1.png" style="margin-top: 230px; width: 170px; border-radius: 50%;">
+			</center>
+		</div>	
+
+		<div class="col-md-6">
+			<center>
+				<div class="card" style="width: 250px; margin-top: 180px; border: 1px solid white; box-shadow: 0 0 5px violet;">
+					<div class="card-header" style="background-color: lightblue;">
+						<h1 class="text" style="font-size: 35px;">Fantasy</h1>
+					</div>
+		
+					<div class="card-body" style="background-color: lightblue; margin-bottom: -15px">
+						<input class="form-control" type="number" id="quiz" placeholder="Quiz"><br>
+						<input class="form-control" type="number" id="activity" placeholder="Activity"><br>
+						<input class="form-control" type="number" id="exam" placeholder="Exam">
+					</div>
+
+					<div class="remember" style=" background-color: lightblue; margin-bottom: 5px; margin-top: 5px;">
+					</div>
+						
+					<div class="card-footer" style="background-color: lightblue; margin-top: -5px;">
+						<button class="btn btn-primary" onclick="login()" style="border-radius: 50px;">Submit</button>
+					</div>
+				</div>
+			</center>
+		</div>	
+
+	</div>
+	<script type="text/javascript">
+		function login() {
+			var q = $("#quiz").val();
+			var a = $("#activity").val();
+			var e = $("#exam").val();
+			$.ajax({
+				url:"controller.php",
+				type:"POST",
+				data:{quiz: q, activity: a, exam: e},
+				dataType:'html',
+				success: function(response){
+					alert(response);
+				}
+			})
+		}	
+	</script>
+</body>
+</html>
